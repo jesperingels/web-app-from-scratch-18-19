@@ -1,23 +1,32 @@
-let request = new XMLHttpRequest();
-// let requestURL = "https://api.chucknorris.io/jokes/random";
+const request = new XMLHttpRequest();
+const requestURL = "https://swapi.co/api/people";
 
-let requestURL = "https://swapi.co/api/people";
+/* Laad een API in met veel data, Maak hier een overzicht van waarin je kunt doorklikken.
+ * hiervoor is het concept routing nodig
+ */
 
-// Laad een API in met veel data, Maak hier een overzicht van waarin je kunt doorklikken.
+request.addEventListener('load', displayData);
 
-request.onreadystatechange = function() {
-    let object = JSON.parse(request.response);
-    if (this.readyState === 4 && this.status === 200) {
-        displayData();
+function displayData() {
 
-        console.log(request.response);
+    if (this.status < 400 && this.status >= 200) {
+
+        const objects = JSON.parse(this.response);
+
+        // for (let i = 0; i < object.results.length; i++) {
+
+        const SWName = objects.results.map(value => {
+
+            const elWrapper = document.querySelector('.wrapper');
+            const elDiv = document.createElement("div");
+
+            elDiv.textContent = value.name;
+
+            elWrapper.appendChild(elDiv);
+
+        });
     }
-
-    function displayData() {
-        document.querySelector('.joke p').innerHTML = object.count;
-    }
-
-};
+}
 
 request.open("GET", requestURL, true);
 request.send();
