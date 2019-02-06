@@ -44,40 +44,48 @@ request.send();
 
 /*****************************
  * Learnt about Array.map();
+ * Corrected let and const
+ * Put code inside IIFE
  */
 
-const request = new XMLHttpRequest();
-const requestURL = "https://swapi.co/api/people";
+(function () {
 
-/* Laad een API in met veel data, Maak hier een overzicht van waarin je kunt doorklikken.
- * hiervoor is het concept routing nodig
- */
+    const request = new XMLHttpRequest();
+    const requestURL = "https://swapi.co/api/people";
 
-request.addEventListener('load', displayData);
+    /* Laad een API in met veel data, Maak hier een overzicht van waarin je kunt doorklikken.
+     * hiervoor is het concept routing nodig
+     */
 
-function displayData() {
+    request.addEventListener('load', displayData);
 
-    if (this.status < 400 && this.status >= 200) {
+    function displayData() {
 
-        const objects = JSON.parse(this.response);
+        if (this.status < 400 && this.status >= 200) {
 
-        // for (let i = 0; i < object.results.length; i++) {
+            const objects = JSON.parse(this.response);
 
-        objects.results.map(value => {
+            // for (let i = 0; i < object.results.length; i++) {
 
-            const elWrapper = document.querySelector('.wrapper');
-            const elDiv = document.createElement("div");
+            objects.results.map(value => {
 
-            elDiv.textContent = value.name;
+                const elWrapper = document.querySelector('.wrapper');
+                const elDiv = document.createElement("div");
 
-            elWrapper.appendChild(elDiv);
+                elDiv.textContent = value.name;
 
-        });
+                elWrapper.appendChild(elDiv);
+
+            });
+        }
     }
-}
 
-request.open("GET", requestURL, true);
-request.send();
+    request.open("GET", requestURL, true);
+    request.send();
+
+})();
+
+
 
 
 
