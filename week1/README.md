@@ -1,7 +1,9 @@
 # Week 1 - Hello API 🐒
 
-Doel: Data ophalen uit een API en renderen in een overzichtspagina.
+[Live Demo](https://jesperingels.github.io/web-app-from-scratch-18-19/week1/index.html)
 
-[Opdrachten](https://drive.google.com/open?id=1OVhWQNaCgSluYviTKKWcApkyPd23xow1PiExb8GYANM)
+-De app haalt data op uit een [Star Wars API](https://swapi.co/) en toont een overzicht van verschillende personages die in het verhaal voor komen. 
 
-[Slides](https://drive.google.com/open?id=1Rjl9xqXoKniQSRJPdkU1O5YwWC33SJK8KiV0a-H_xZU)
+- ![alt text](https://github.com/jesperingels/web-app-from-scratch-18-19/blob/master/week1/img/ActorenDiagram.jpg)
+
+
