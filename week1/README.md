@@ -7,7 +7,7 @@
 Actoren Diagram
 ![alt text](https://github.com/jesperingels/web-app-from-scratch-18-19/blob/master/week1/img/ActorenDiagram.jpg)
 
-- The rate limit for this [API](https://swapi.co/) is applied via the IP address and is limited to 10,000 API request per day.
+- "The rate limit for this [API](https://swapi.co/) is applied via the IP address and is limited to 10,000 API request per day."
 
 - Op dit moment zit er nog geen interactie in de applicatie. Er wordt nu alleen data opgehaald met een GET request naar de API en vervolgens wordt de data getoond in de browser.
 
