@@ -129,20 +129,71 @@ const dataController = ( () => {
     }
 })();
 
-// Module to get the data
+// // Module to get the data
 const getData = (dataCtrl => {
+    
+    function people() {
+        const reqURL = "https://swapi.co/api/people";
+        const request = new XMLHttpRequest();
 
-    const request = new XMLHttpRequest();
-    const requestURL = "https://swapi.co/api/people";
+        request.addEventListener('load', dataController.displayData);
 
-    request.addEventListener('load', dataCtrl.displayData);
+        request.open("GET", reqURL, true);
+        request.send();
+    }
 
+    function species() {
+        const reqURL = "https://swapi.co/api/species";
+        const request = new XMLHttpRequest();
 
-    request.open("GET", requestURL, true);
-    request.send();
+        request.addEventListener('load', dataController.displayData);
+
+        request.open("GET", reqURL, true);
+        request.send();
+    }
+
+    function starships() {
+        const reqURL = "https://swapi.co/api/starships";
+        const request = new XMLHttpRequest();
+
+        request.addEventListener('load', dataController.displayData);
+
+        request.open("GET", reqURL, true);
+        request.send();
+    }
+
+    function planets() {
+        const reqURL = "https://swapi.co/api/planets";
+        const request = new XMLHttpRequest();
+
+        request.addEventListener('load', dataController.displayData);
+
+        request.open("GET", reqURL, true);
+        request.send();
+    }
+
+    routie({
+        'people': function() {
+            people();
+        },
+
+        'species': function() {
+            species();
+        },
+
+        'starships': function() {
+            starships();
+        },
+
+        'planets': function() {
+            planets();
+        }
+
+    });
+
+    routie();
 
 })(dataController);
-
 
 
 
