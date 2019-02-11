@@ -44,8 +44,8 @@ request.send();
  * Corrected let and const
  * Put code inside IIFE
  */
-
-(function () {
+/*
+const getData = (function () {
 
     const request = new XMLHttpRequest();
     const requestURL = "https://swapi.co/api/people";
@@ -55,7 +55,6 @@ request.send();
     function displayData() {
 
         if (this.status < 400 && this.status >= 200) {
-
 
 
             const objects = JSON.parse(this.response);
@@ -81,6 +80,60 @@ request.send();
     request.send();
 
 })();
+*/
+
+/******
+ * Create Modules
+ */
+
+const dataController = (function () {
+
+    const DOMStrings = {
+        wrapper: '.wrapper',
+    };
+
+    return {
+
+        displayData : function () {
+
+            if (this.status < 400 && this.status >= 200) {
+
+                const objects = JSON.parse(this.response);
+
+                console.log(objects.results);
+
+                // for (let i = 0; i < object.results.length; i++) {
+
+                objects.results.map(value => {
+
+                    const elWrapper = document.querySelector(DOMStrings.wrapper);
+                    const elDiv = document.createElement("div");
+
+                    elDiv.textContent = value.name;
+
+                    elWrapper.appendChild(elDiv);
+
+                });
+            }
+        }
+    }
+
+
+
+})();
+
+const getData = (function (dataCtrl) {
+
+    const request = new XMLHttpRequest();
+    const requestURL = "https://swapi.co/api/people";
+
+    request.addEventListener('load', dataCtrl.displayData);
+
+
+    request.open("GET", requestURL, true);
+    request.send();
+
+})(dataController);
 
 
 
