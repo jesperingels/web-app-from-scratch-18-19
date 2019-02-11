@@ -102,14 +102,15 @@ const dataController = ( () => {
                 const loading = document.querySelector('p');
                 loading.classList.add('d-none');
 
-                const objects = JSON.parse(this.response);
+                const object = JSON.parse(this.response);
 
-                objects.results.map(value => {
+                console.log(object.results);
 
+                object.results.forEach( prop => {
                     const elWrapper = document.querySelector(DOMStrings.wrapper);
                     const elDiv = document.createElement("div");
 
-                    elDiv.textContent = value.name;
+                    elDiv.textContent = prop.name;
 
                     elWrapper.appendChild(elDiv);
                 });
