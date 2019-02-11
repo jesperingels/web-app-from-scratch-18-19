@@ -131,7 +131,7 @@ const dataController = ( () => {
 
 // // Module to get the data
 const getData = (dataCtrl => {
-    
+
     function people() {
         const reqURL = "https://swapi.co/api/people";
         const request = new XMLHttpRequest();
