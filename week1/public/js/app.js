@@ -84,9 +84,10 @@ const getData = (function () {
 
 /******
  * Create Modules
+ * Use Arrow Functions
  */
 
-const dataController = (function () {
+const dataController = ( () => {
 
     const DOMStrings = {
         wrapper: '.wrapper',
@@ -94,15 +95,14 @@ const dataController = (function () {
 
     return {
 
-        displayData : function () {
+        displayData :  function () {
 
             if (this.status < 400 && this.status >= 200) {
 
+                const loading = document.querySelector('p');
+                loading.classList.add('d-none');
+
                 const objects = JSON.parse(this.response);
-
-                console.log(objects.results);
-
-                // for (let i = 0; i < object.results.length; i++) {
 
                 objects.results.map(value => {
 
@@ -112,17 +112,18 @@ const dataController = (function () {
                     elDiv.textContent = value.name;
 
                     elWrapper.appendChild(elDiv);
-
                 });
+
+            } else {
+                document.body.textContent = 'Error: Help me Obi-wan Kenobi, you\'re my only hope...';
             }
+
         }
     }
-
-
-
 })();
 
-const getData = (function (dataCtrl) {
+
+const getData = (dataCtrl => {
 
     const request = new XMLHttpRequest();
     const requestURL = "https://swapi.co/api/people";

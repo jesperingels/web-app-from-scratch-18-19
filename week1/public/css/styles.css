@@ -24,3 +24,6 @@ main {
         font-weight: bold;
         text-transform: uppercase;
     }
+.d-none {
+    display: none!important;
+}
