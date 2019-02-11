@@ -1,0 +1,12 @@
+html,
+body {
+    min-height: 100%;
+}
+
+main {
+    height:500px;
+
+}
+.d-none {
+    display: none!important;
+}
