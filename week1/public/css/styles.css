@@ -7,23 +7,6 @@ main {
     height:500px;
 
 }
-
-.joke {
-    background-image: url(../img/chuck.jpg);
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-    .joke p {
-        color: #FFFFFF;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
 .d-none {
     display: none!important;
 }

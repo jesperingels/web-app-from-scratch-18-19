@@ -87,8 +87,10 @@ const getData = (function () {
  * Use Arrow Functions
  */
 
+// Data controller module
 const dataController = ( () => {
 
+    // DRY precaution
     const DOMStrings = {
         wrapper: '.wrapper',
     };
@@ -97,9 +99,11 @@ const dataController = ( () => {
 
         displayData :  function () {
 
+            // Check if data comes in
             if (this.status < 400 && this.status >= 200) {
 
-                const loading = document.querySelector('p');
+                // Select and hide: 'Loading...'
+                const loading = document.getElementById('loader');
                 loading.classList.add('d-none');
 
                 const object = JSON.parse(this.response);
@@ -108,14 +112,16 @@ const dataController = ( () => {
 
                 object.results.forEach( prop => {
                     const elWrapper = document.querySelector(DOMStrings.wrapper);
-                    const elDiv = document.createElement("div");
+                    const elDiv = document.createElement("p");
 
                     elDiv.textContent = prop.name;
 
                     elWrapper.appendChild(elDiv);
                 });
 
-            } else {
+            }
+            // If data doesn't come in, show error
+            else {
                 document.body.textContent = 'Error: Help me Obi-wan Kenobi, you\'re my only hope...';
             }
 
@@ -123,7 +129,7 @@ const dataController = ( () => {
     }
 })();
 
-
+// Module to get the data
 const getData = (dataCtrl => {
 
     const request = new XMLHttpRequest();
