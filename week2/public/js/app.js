@@ -106,10 +106,12 @@ const dataController = ( () => {
                 const loading = document.getElementById('loader');
                 loading.classList.add('d-none');
 
+                // Parse the returned string to JSON
                 const object = JSON.parse(this.response);
 
                 console.log(object.results);
 
+                // For each item in the array show the name
                 object.results.forEach( prop => {
                     const elWrapper = document.querySelector(DOMStrings.wrapper);
                     const elDiv = document.createElement("p");
