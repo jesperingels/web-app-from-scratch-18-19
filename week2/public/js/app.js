@@ -1,122 +1,138 @@
-/******
+/*******************************
  * Create Modules
  * Use Arrow Functions
  */
 
-// Data controller module
-const dataCtrl = {
+let obj;
+console.log(obj);
 
-    // DRY precaution
-    DOMStrings: {
-        wrapper: '.wrapper'
-    },
+(() => {
+    var a = ()=> {
+        b('dank')
+    },b = (data)=>{
+        console.log(data)
+    };
+    a();
+    // Data controller module
+    const dataCtrl = {
+
+        // DRY precaution
+        DOMStrings: {
+            wrapper: '.wrapper'
+        },
 
 
-    displayData :  function () {
+        displayData :  function () {
 
-        // Check if data comes in
-        if (this.status < 400 && this.status >= 200) {
+            // Check if data comes in
+            if (this.status < 400 && this.status >= 200) {
 
-            // Select and hide: 'Loading...'
-            const loading = document.getElementById('loader');
-            loading.classList.add('d-none');
+                // Select and hide: 'Loading...'
+                const loading = document.getElementById('loader');
+                loading.classList.add('d-none');
 
-            // Parse the returned string to JSON
-            const object = JSON.parse(this.response);
+                // Parse the returned string to JSON
+                obj = JSON.parse(this.response);
 
-            console.log(object.results);
+                console.log(obj.results);
 
-            // For each item in the array show the name
-            object.results.forEach( prop => {
-                const elWrapper = document.querySelector(dataCtrl.DOMStrings.wrapper);
-                const elDiv = document.createElement("p");
+                // For each item in the array show the name
+                obj.results.forEach( prop => {
+                    const elWrapper = document.querySelector(this.DOMStrings.wrapper);
+                    const elDiv = document.createElement("p");
 
-                elDiv.textContent = prop.name;
+                    elDiv.textContent = prop.name;
 
-                elWrapper.appendChild(elDiv);
-            });
+                    elWrapper.appendChild(elDiv);
+                });
+
+                routie();
+
+            }
+
+            // If data doesn't come in, show error
+            else {
+                document.body.textContent = 'Error: Help me Obi-wan Kenobi, you\'re my only hope...';
+            }
 
         }
-        // If data doesn't come in, show error
-        else {
-            document.body.textContent = 'Error: Help me Obi-wan Kenobi, you\'re my only hope...';
-        }
+    };
 
-    }
-};
-
-// const templating = ( (data) => {
-//
-//     let peopleTemp = " <ul>{{#each data.object.results}}</ul> "
-//     console.log(data.objec)
-//
-// })(dataController);
+    const templating = {
+        peopleTemp: "<ul>{{#each dataCtrl.object.results}}<li>{{name}}{{/each}}</ul>",
+    };
 
 // // Module to get the data
-const getData = {
+    const getData = {
 
-    people: function () {
-        const reqURL = "https://swapi.co/api/people";
-        const request = new XMLHttpRequest();
+        people: function () {
+            const reqURL = "https://swapi.co/api/people";
+            const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataCtrl.displayData);
+            request.addEventListener('load', dataCtrl.displayData);
 
-        request.open("GET", reqURL, true);
-        request.send();
-    },
+            request.open("GET", reqURL, true);
+            request.send();
+        },
 
-    species: function () {
-        const reqURL = "https://swapi.co/api/species";
-        const request = new XMLHttpRequest();
+        species: function () {
+            const reqURL = "https://swapi.co/api/species";
+            const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataCtrl.displayData);
+            request.addEventListener('load', dataCtrl.displayData);
 
-        request.open("GET", reqURL, true);
-        request.send();
-    },
+            request.open("GET", reqURL, true);
+            request.send();
+        },
 
-    starships: function () {
-        const reqURL = "https://swapi.co/api/starships";
-        const request = new XMLHttpRequest();
+        starships: function () {
+            const reqURL = "https://swapi.co/api/starships";
+            const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataCtrl.displayData);
+            request.addEventListener('load', dataCtrl.displayData);
 
-        request.open("GET", reqURL, true);
-        request.send();
-    },
+            request.open("GET", reqURL, true);
+            request.send();
+        },
 
-    planets: function () {
-        const reqURL = "https://swapi.co/api/planets";
-        const request = new XMLHttpRequest();
+        planets: function () {
+            const reqURL = "https://swapi.co/api/planets";
+            const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataCtrl.displayData);
+            request.addEventListener('load', dataCtrl.displayData);
 
-        request.open("GET", reqURL, true);
-        request.send();
-    }
+            request.open("GET", reqURL, true);
+            request.send();
+        }
 
-};
+    };
 
-routie({
-    'people': function() {
-        getData.people();
-    },
+    routie({
+        'people': function() {
+            getData.people();
+            let template = Handlebars.compile(templating.peopleTemp);
 
-    'species': function() {
-        getData.species();
-    },
+            let data = template(obj.results);
+            document.querySelector('main').innerHTML += data;
+        },
 
-    'starships': function() {
-        getData.starships();
-    },
+        'species': function() {
+            getData.species();
+        },
 
-    'planets': function() {
-        getData.planets();
-    }
+        'starships': function() {
+            getData.starships();
+        },
 
-});
+        'planets': function() {
+            getData.planets();
+        }
 
-routie();
+    });
+
+
+})();
+
 
 
 
