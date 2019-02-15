@@ -129,7 +129,15 @@ const dataController = ( () => {
 
         }
     }
+
 })();
+
+// const templating = ( (data) => {
+//
+//     let peopleTemp = " <ul>{{#each data.object.results}}</ul> "
+//     console.log(data.objec)
+//
+// })(dataController);
 
 // // Module to get the data
 const getData = (dataCtrl => {
@@ -138,7 +146,7 @@ const getData = (dataCtrl => {
         const reqURL = "https://swapi.co/api/people";
         const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataController.displayData);
+        request.addEventListener('load', dataCtrl.displayData);
 
         request.open("GET", reqURL, true);
         request.send();
@@ -148,7 +156,7 @@ const getData = (dataCtrl => {
         const reqURL = "https://swapi.co/api/species";
         const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataController.displayData);
+        request.addEventListener('load', dataCtrl.displayData);
 
         request.open("GET", reqURL, true);
         request.send();
@@ -158,7 +166,7 @@ const getData = (dataCtrl => {
         const reqURL = "https://swapi.co/api/starships";
         const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataController.displayData);
+        request.addEventListener('load', dataCtrl.displayData);
 
         request.open("GET", reqURL, true);
         request.send();
@@ -168,7 +176,7 @@ const getData = (dataCtrl => {
         const reqURL = "https://swapi.co/api/planets";
         const request = new XMLHttpRequest();
 
-        request.addEventListener('load', dataController.displayData);
+        request.addEventListener('load', dataCtrl.displayData);
 
         request.open("GET", reqURL, true);
         request.send();
@@ -197,6 +205,9 @@ const getData = (dataCtrl => {
 
 })(dataController);
 
+var data  = {
+
+};
 
 
 
