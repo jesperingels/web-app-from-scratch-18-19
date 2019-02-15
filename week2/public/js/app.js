@@ -4,49 +4,46 @@
  */
 
 // Data controller module
-const dataController = ( () => {
+const dataCtrl = {
 
     // DRY precaution
-    const DOMStrings = {
-        wrapper: '.wrapper',
-    };
+    DOMStrings: {
+        wrapper: '.wrapper'
+    },
 
-    return {
 
-        displayData :  function () {
+    displayData :  function () {
 
-            // Check if data comes in
-            if (this.status < 400 && this.status >= 200) {
+        // Check if data comes in
+        if (this.status < 400 && this.status >= 200) {
 
-                // Select and hide: 'Loading...'
-                const loading = document.getElementById('loader');
-                loading.classList.add('d-none');
+            // Select and hide: 'Loading...'
+            const loading = document.getElementById('loader');
+            loading.classList.add('d-none');
 
-                // Parse the returned string to JSON
-                const object = JSON.parse(this.response);
+            // Parse the returned string to JSON
+            const object = JSON.parse(this.response);
 
-                console.log(object.results);
+            console.log(object.results);
 
-                // For each item in the array show the name
-                object.results.forEach( prop => {
-                    const elWrapper = document.querySelector(DOMStrings.wrapper);
-                    const elDiv = document.createElement("p");
+            // For each item in the array show the name
+            object.results.forEach( prop => {
+                const elWrapper = document.querySelector(dataCtrl.DOMStrings.wrapper);
+                const elDiv = document.createElement("p");
 
-                    elDiv.textContent = prop.name;
+                elDiv.textContent = prop.name;
 
-                    elWrapper.appendChild(elDiv);
-                });
-
-            }
-            // If data doesn't come in, show error
-            else {
-                document.body.textContent = 'Error: Help me Obi-wan Kenobi, you\'re my only hope...';
-            }
+                elWrapper.appendChild(elDiv);
+            });
 
         }
-    }
+        // If data doesn't come in, show error
+        else {
+            document.body.textContent = 'Error: Help me Obi-wan Kenobi, you\'re my only hope...';
+        }
 
-})();
+    }
+};
 
 // const templating = ( (data) => {
 //
@@ -97,10 +94,6 @@ const getData = {
         request.open("GET", reqURL, true);
         request.send();
     }
-
-};
-
-var data  = {
 
 };
 
