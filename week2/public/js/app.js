@@ -4,28 +4,47 @@
  */
 
 
-// (() => {
+(() => {
 
     const api = {
+        // Set base URL for dynamic link
         solveUrl:(ID)=>{
           return `https://swapi.co/api/${ID}`
         }
     };
 
     const getData = {
-        people:async()=>{
-            let a = await getData.checkExisting('people');
-            render.people(a)
+        people:async ()=>{
+            const a = await getData.checkExisting('people');
+            render.people(a,'people')
+
         },
 
-        starships:()=> {
-            getData.checkExisting('starships')
+        planets:async ()=> {
+            const a = await getData.checkExisting('planets');
+            render.people(a,'planets')
         },
 
+        species:async ()=> {
+            const a = await getData.checkExisting('species');
+            render.people(a,'species')
+        },
+
+        starships:async ()=> {
+            const a = await getData.checkExisting('starships');
+            render.people(a,'starships')
+        },
+
+        // Set function to be asynchronous
         checkExisting:async (string)=>{
+            // Get item from local storage
             let data = window.localStorage.getItem(`swapi-${string}`);
+
+            // check if the item exists
             if (!data) {
+                // Set data with URL from api.solveUrl
                 data = await getData.req(api.solveUrl(string));
+                // Save in localStorage as string
                 window.localStorage.setItem(`swapi-${string}`, JSON.stringify(data));
                 console.log('new');
                 return data;
@@ -35,24 +54,97 @@
             }
         },
 
-        req: (url)=>{
-        console.log(url);
-        return new Promise(resolve =>{
-            fetch(url)
-                .then(res => res.json())
-                .then(response => resolve(response))
-        })
+        req: (url)=> {
+            console.log(url);
+            // Fetch and return data
+            return new Promise((resolve, reject) => {
+                fetch(url)
+                    .then(res => res.json())
+                    .then(res => resolve(res))
+                    .catch(error => reject(error))
+            })
         }
     };
 
     const render = {
-        people: data => {
+        people: (data, id) => {
             console.log(data);
+
+            document.querySelector('.wrapper').classList.add('d-none');
+            data.results.forEach( prop => {
+                const elWrapper = document.getElementById('content');
+                const elPar = document.createElement("p");
+                elPar.textContent = prop.name;
+                elWrapper.appendChild(elPar);
+            });
         }
     };
 
+
+    const navigation = {
+        init:()=>{
+            let navi = document.querySelectorAll('.wrapper > *');
+
+            navi.forEach(navEl =>{
+                navEl.addEventListener('click',()=>{
+                    document.getElementById('content').classList.remove('d-none');
+                    navigation.prev();
+                    switch(navEl.id){
+                        case 'people':
+                            getData.people();
+                            break;
+                        case 'starships':
+                            getData.starships();
+                            break;
+                        case 'planets':
+                            getData.planets();
+                            break;
+                        case 'species':
+                            getData.species();
+                            break;
+                        default:
+                            console.log('unknown');
+                            break;
+
+                    }
+                })
+            })
+        },
+
+        prev: () => {
+            const backButton = document.getElementById('back');
+            backButton.style.display = 'block';
+            const dataContent = document.getElementById('content');
+            while (dataContent.firstChild){
+                dataContent.removeChild(dataContent.firstChild);
+            }
+            backButton.addEventListener('click', () => {
+                dataContent.classList.add('d-none');
+                document.querySelector('.wrapper').classList.remove('d-none');
+            })
+        }
+    };
     // console.log(getData)
-    getData.people();
+    navigation.init();
+
+        routie({
+        'people': function() {
+            getData.people();
+        },
+
+        'species': function() {
+            getData.species();
+        },
+
+        'starships': function() {
+            getData.starships();
+        },
+
+        'planets': function() {
+            getData.planets();
+        }
+
+    });
 
 
     // Data controller module
@@ -173,7 +265,7 @@
 //     });
 
 
-// })();
+})();
 
 
 // Promise practice
@@ -191,10 +283,6 @@
 //     .catch(error => {
 //         console.log("error");
 //     });
-
-
-
-
 
 
 
