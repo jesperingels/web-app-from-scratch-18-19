@@ -16,27 +16,26 @@
     const getData = {
         people:async ()=>{
             const a = await getData.checkExisting('people');
-            render.people(a,'people')
-
+            render.item(a,'people')
         },
 
         planets:async ()=> {
             const a = await getData.checkExisting('planets');
-            render.people(a,'planets')
+            render.item(a,'planets')
         },
 
         species:async ()=> {
             const a = await getData.checkExisting('species');
-            render.people(a,'species')
+            render.item(a,'species')
         },
 
         starships:async ()=> {
             const a = await getData.checkExisting('starships');
-            render.people(a,'starships')
+            render.item(a,'starships')
         },
 
         // Set function to be asynchronous
-        checkExisting:async (string)=>{
+        checkExisting:async string=>{
             // Get item from local storage
             let data = window.localStorage.getItem(`swapi-${string}`);
 
@@ -48,13 +47,15 @@
                 window.localStorage.setItem(`swapi-${string}`, JSON.stringify(data));
                 console.log('new');
                 return data;
-            } else {
+
+            } else if (data) {
                 console.log('existing');
                 return JSON.parse(data);
             }
         },
 
-        req: (url)=> {
+        // This method handles my request
+        req: url=> {
             console.log(url);
             // Fetch and return data
             return new Promise((resolve, reject) => {
@@ -67,49 +68,51 @@
     };
 
     const render = {
-        people: (data, id) => {
+        item: (data, id) => {
             console.log(data);
 
             document.querySelector('.wrapper').classList.add('d-none');
             data.results.forEach( prop => {
                 const elWrapper = document.getElementById('content');
-                const elPar = document.createElement("p");
-                elPar.textContent = prop.name;
-                elWrapper.appendChild(elPar);
+                if (!elWrapper.children.length) {
+                    const elPar = document.createElement("p");
+                    elPar.textContent = prop.name;
+                    elWrapper.appendChild(elPar);
+                }
             });
         }
     };
 
 
     const navigation = {
-        init:()=>{
-            let navi = document.querySelectorAll('.wrapper > *');
-
-            navi.forEach(navEl =>{
-                navEl.addEventListener('click',()=>{
-                    document.getElementById('content').classList.remove('d-none');
-                    navigation.prev();
-                    switch(navEl.id){
-                        case 'people':
-                            getData.people();
-                            break;
-                        case 'starships':
-                            getData.starships();
-                            break;
-                        case 'planets':
-                            getData.planets();
-                            break;
-                        case 'species':
-                            getData.species();
-                            break;
-                        default:
-                            console.log('unknown');
-                            break;
-
-                    }
-                })
-            })
-        },
+        // init:()=>{
+        //     let navi = document.querySelectorAll('.wrapper > *');
+        //
+        //     navi.forEach(navEl =>{
+        //         navEl.addEventListener('click',()=>{
+        //             document.getElementById('content').classList.remove('d-none');
+        //             navigation.prev();
+        //             switch(navEl.id){
+        //                 case 'people':
+        //                     getData.people();
+        //                     break;
+        //                 case 'starships':
+        //                     getData.starships();
+        //                     break;
+        //                 case 'planets':
+        //                     getData.planets();
+        //                     break;
+        //                 case 'species':
+        //                     getData.species();
+        //                     break;
+        //                 default:
+        //                     console.log('unknown');
+        //                     break;
+        //
+        //             }
+        //         })
+        //     })
+        // },
 
         prev: () => {
             const backButton = document.getElementById('back');
@@ -124,27 +127,28 @@
             })
         }
     };
+
     // console.log(getData)
-    navigation.init();
+    // navigation.init();
 
-        routie({
-        'people': function() {
-            getData.people();
-        },
-
-        'species': function() {
-            getData.species();
-        },
-
-        'starships': function() {
-            getData.starships();
-        },
-
-        'planets': function() {
-            getData.planets();
-        }
-
-    });
+    //     routie({
+    //     'people': function() {
+    //         getData.people();
+    //     },
+    //
+    //     'species': function() {
+    //         getData.species();
+    //     },
+    //
+    //     'starships': function() {
+    //         getData.starships();
+    //     },
+    //
+    //     'planets': function() {
+    //         getData.planets();
+    //     }
+    //
+    // });
 
 
     // Data controller module
@@ -241,48 +245,31 @@
 //
 //     };
 //
-//     routie({
-//         'people': function() {
-//             getData.people();
-//             let template = Handlebars.compile(templating.peopleTemp);
-//
-//             let data = template(obj.results);
-//             document.querySelector('main').innerHTML += data;
-//         },
-//
-//         'species': function() {
-//             getData.species();
-//         },
-//
-//         'starships': function() {
-//             getData.starships();
-//         },
-//
-//         'planets': function() {
-//             getData.planets();
-//         }
-//
-//     });
+    routie({
+        'people': function() {
+            getData.people();
+            let template = Handlebars.compile(templating.peopleTemp);
+
+            let data = template(obj.results);
+            document.querySelector('main').innerHTML += data;
+        },
+
+        'species': function() {
+            getData.species();
+        },
+
+        'starships': function() {
+            getData.starships();
+        },
+
+        'planets': function() {
+            getData.planets();
+        }
+
+    });
 
 
 })();
-
-
-// Promise practice
-
-// const getIDs = new Promise((resolve, reject) => {
-//     setTimeout(() =>{
-//         resolve([765, 8098, 708, 344]);
-//     }, 1500);
-// });
-//
-// getIDs
-//     .then(IDs => {
-//     console.log(IDs);
-//     })
-//     .catch(error => {
-//         console.log("error");
-//     });
 
 
 
