@@ -1,5 +1,3 @@
-# Week 3 
-
 [Live Demo](https://jesperingels.github.io/web-app-from-scratch-18-19/week3/index.html)
 
 - De app haalt data op uit een [Star Wars API](https://swapi.co/) en toont op de 1e pagina een overzicht van verschillende categorieën waarover data kan worden opgehaald. 
@@ -25,6 +23,5 @@ Interaction Diagram
 ##Wishlist
 -Meer interaction
 -Meerdere pagina's
-
 
 
