@@ -2,7 +2,7 @@
 
 [Live Demo](https://jesperingels.github.io/web-app-from-scratch-18-19/week1/index.html)
 
-- De app haalt data op uit een [Star Wars API](https://swapi.co/) en toont een overzicht van verschillende personages die in het verhaal voor komen. 
+- De app haalt data op uit een [Star Wars API](https://swapi.co/) en toont op de 1e pagina een overzicht van verschillende categorieën waarover data kan worden opgehaald. 
 
 Actoren Diagram
 ![alt text](https://github.com/jesperingels/web-app-from-scratch-18-19/blob/master/week2/img/ActorenDiagram.jpg)
