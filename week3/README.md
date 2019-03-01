@@ -12,9 +12,19 @@ Interaction Diagram
 
 - "The rate limit for this [API](https://swapi.co/) is applied via the IP address and is limited to 10,000 API request per day."
 
-- Ik gebruik volgens mij nog niet echt javascript design patterns. Wel heb ik m'n code in een IIFE gestopt. Zodat iedereen dit in zijn of haar website zou kunnen implementeren zonder dat het een conflict oplevert. 
+##Design Patterns
+-camelCasing
+-objectLiterals
+-arrowFunctions
+-IIFE
+-const/let
 
--Ik maak gebruik van een Promise en async/await
+##Microlibraries
+-routie.js
+
+##Wishlist
+-Meer interaction
+-Meerdere pagina's
 
 
 

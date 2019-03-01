@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fd2e787-23be-4fdc-9e2f-6931edd3b784" name="Default Changelist" comment="" />
+    <list default="true" id="1fd2e787-23be-4fdc-9e2f-6931edd3b784" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/week3/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/week3/README.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -22,11 +24,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/week3/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1417">
+            <state relative-caret-position="516">
               <caret line="140" column="7" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/week3/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="390">
+                <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -64,6 +78,7 @@
         <option value="$PROJECT_DIR$/week2/public/js/app.js" />
         <option value="$PROJECT_DIR$/week3/index.html" />
         <option value="$PROJECT_DIR$/week3/public/js/app.js" />
+        <option value="$PROJECT_DIR$/week3/README.md" />
       </list>
     </option>
   </component>
@@ -135,18 +150,18 @@
       <workItem from="1550220985752" duration="3109000" />
       <workItem from="1551083627234" duration="14244000" />
       <workItem from="1551356045043" duration="7224000" />
-      <workItem from="1551428956131" duration="1032000" />
+      <workItem from="1551428956131" duration="1373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54202000" />
+    <option name="totallyTimeSpent" value="54543000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="713" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18336026" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.092084005" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -244,8 +259,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/week3/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1417">
+        <state relative-caret-position="516">
           <caret line="140" column="7" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week3/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="390">
+            <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
