@@ -14,7 +14,7 @@ Interaction Diagram
 
 - Ik gebruik volgens mij nog niet echt javascript design patterns. Wel heb ik m'n code in een IIFE gestopt. Zodat iedereen dit in zijn of haar website zou kunnen implementeren zonder dat het een conflict oplevert. 
 
-- Ik wil gebruik gaan maken van een Promise en Async beter toepassen in mijn javascript.
+-Ik maak gebruik van een Promise en async/await
 
 
 
